@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %}通知方式配置{% endblock %}
+
+
+{% block navbar %}
+<section class="content-header">
+    <h1>通知方式配置</h1>
+    <ol class="breadcrumb">
+        <li><i class="fa fa-dashboard"></i> 当前位置</li>
+        <li class="active">通知方式管理</li>
+        <li class="active">通知方式配置</li>
+    </ol>
+</section>
+{% endblock %}
+
+
+{% block content %}
+<div class="box box-primary">
+    <form method="post">
+        {{form.hidden_tag()}}
+        <div class="box-header with-border">
+            {% include 'message.html' %}
+        </div>
+
+        <div class="box-body">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>{{form.check_order.label}}</label>
+                    {{form.check_order(class_="slider form-control",placeholder="请输入 列表顺序")}}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>{{form.notify_type.label}}</label>
+                    {{form.notify_type(class_="form-control select2",placeholder="请输入")}}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>{{form.notify_name.label}}</label>
+                    {{form.notify_name(class_="form-control",placeholder="请输入")}}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>{{form.notify_number.label}}</label>
+                    {{form.notify_number(class_="form-control",placeholder="请输入")}}
+                </div>
+            </div>
+        </div>
+
+        <div class="box-footer">
+            <div class="col-md-12">
+                {{form.status()}}
+                {{form.submit(class_="btn btn-primary pull-right")}}
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    function initPage() {
+        slide_value = $(".slider").val() == "" ? 50 : parseInt($(".slider").val());
+        $(".slider").slider({
+            id: "blue",
+            max: 100,
+            value: slide_value
+        });
+
+        switch_value = $('#status')[0].checked
+        $('#status').bootstrapSwitch({
+            state: switch_value,
+            onText: '生效',
+            offText: '失效'
+
+        });
+
+        $(".select2").select2();
+    }
+</script>
+{% endblock %}

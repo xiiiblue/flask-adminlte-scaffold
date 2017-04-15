@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}HTTP错误 - 404{% endblock %}
+{% block navtitle %}HTTP错误 - 404{% endblock %}
+
+{% block content %}
+<div class="box box-primary">
+    <div class="box-header with-border"></div>
+    <div class="box-body">
+        <div class="callout callout-info">
+            <h1><i class="icon fa fa-info"></i> 错误代码 - 404</h1>
+            <p>&nbsp;</p>
+            <h3>页面未找到</h3>
+        </div>
+    </div>
+    <div class="box-footer">
+        <a class="btn btn-primary" href="{{url_for('main.index')}}">返回首页</a>
+    </div>
+</div>
+{% endblock%}

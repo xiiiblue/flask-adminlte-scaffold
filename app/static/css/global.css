@@ -1,0 +1,153 @@
+.select2 {
+    width: 100%;
+}
+
+.textarea {
+    width: 100%;
+    height: 200px;
+    font-size: 14px;
+    line-height: 18px;
+    border: 1px solid #dddddd;
+    padding: 10px;
+    padding: 10px;
+}
+
+.bootstrap-switch-primary {
+    background-color: #3c8dbc !important;
+    border-color: #367fa9 !important;
+}
+
+/*文件上传按钮*/
+.input-group-btn input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    opacity: 0;
+    -ms-filter: 'alpha(opacity=0)';
+    direction: ltr;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+}
+
+/*ckeditor消息通知*/
+.cke_notifications_area {
+    pointer-events: none
+}
+
+.cke_notification {
+    pointer-events: auto;
+    position: relative;
+    margin: 10px;
+    width: 300px;
+    color: white;
+    border-radius: 3px;
+    text-align: center;
+    opacity: .95;
+    filter: alpha(opacity=95);
+    box-shadow: 2px 2px 3px 0 rgba(50, 50, 50, 0.3);
+    -webkit-animation: fadeIn .7s;
+    animation: fadeIn .7s
+}
+
+.cke_notification_message a {
+    color: #12306f
+}
+
+@-webkit-keyframes fadeIn {
+    from {
+        opacity: .4
+    }
+    to {
+        opacity: .95
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: .4
+    }
+    to {
+        opacity: .95
+    }
+}
+
+.cke_notification_success {
+    background: #72b572;
+    border: 1px solid #63a563
+}
+
+.cke_notification_warning {
+    background: #c83939;
+    border: 1px solid #902b2b
+}
+
+.cke_notification_info {
+    background: #2e9ad0;
+    border: 1px solid #0f74a8
+}
+
+.cke_notification_info span.cke_notification_progress {
+    background-color: #0f74a8;
+    display: block;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    z-index: 1
+}
+
+.cke_notification_message {
+    position: relative;
+    margin: 4px 23px 3px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    line-height: 18px;
+    z-index: 4;
+    text-overflow: ellipsis;
+    overflow: hidden
+}
+
+.cke_notification_close {
+    background-image: url(../plugins/ckeditor/skins/bootstrapck/images/notification-close.png);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    position: absolute;
+    cursor: pointer;
+    text-align: center;
+    height: 20px;
+    width: 20px;
+    top: 1px;
+    right: 1px;
+    padding: 0;
+    margin: 0;
+    z-index: 5;
+    opacity: .6;
+    filter: alpha(opacity=60)
+}
+
+.cke_notification_close:hover {
+    opacity: 1;
+    filter: alpha(opacity=100)
+}
+
+.cke_notification_close span {
+    display: none
+}
+
+.cke_notification_warning a.cke_notification_close {
+    opacity: .8;
+    filter: alpha(opacity=80)
+}
+
+.cke_notification_warning a.cke_notification_close:hover {
+    opacity: 1;
+    filter: alpha(opacity=100)
+}
+
+/*datatable文字居中*/
+.column-center {
+    text-align: center;
+}

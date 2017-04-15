@@ -1,0 +1,9 @@
+{% if get_flashed_messages() %}
+<div class="alert callout callout-info" id="alertarea">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <h4><i class="icon fa fa-info"></i>提示信息</h4>
+    {% for message in get_flashed_messages() %}
+    <p>{{ message }}</p>
+    {% endfor %}
+</div>
+{% endif %}

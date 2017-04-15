@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block title %}通知方式查询{% endblock %}
+{% block navbar %}
+<section class="content-header">
+    <h1>通知方式查询</h1>
+    <ol class="breadcrumb">
+        <li><i class="fa fa-dashboard"></i> 当前位置</li>
+        <li class="active">通知方式管理</li>
+        <li class="active">通知方式查询</li>
+    </ol>
+</section>
+{% endblock %}
+
+{% block content %}
+<div class="box box-primary">
+    <div class="box-header with-border">
+        {% include 'message.html' %}
+    </div>
+
+    <div class="box-body">
+        {% if form%}
+        <table class="table table-bordered">
+            <tr>
+                <th>ID</th>
+                <th>通知方式</th>
+                <th>通知人姓名</th>
+                <th>通知人号码</th>
+                <th>状态</th>
+                <th>编辑</th>
+                <th>删除</th>
+            </tr>
+            {% for row in form.content %}
+            <tr>
+                <td>{{row.id}}</td>
+                <td>{{row.notify_type}}</td>
+                <td>{{row.notify_name}}</td>
+                <td>{{row.notify_number}}</td>
+                <td>
+                    {% if row.status %}
+                    <input type="checkbox" data-id="{{row.id}}" class="status" data-on-text="生效" data-off-text="失效"
+                           data-size="mini" checked>
+                    {% else %}
+                    <input type="checkbox" data-id="{{row.id}}" class="status" data-on-text="生效" data-off-text="失效"
+                           data-size="mini">
+                    {% endif %}
+                </td>
+                <td><a class='fa fa-lg fa-edit text-light-blue'
+                       href='{{ url_for("main.notifyedit", id=row.id) }}'></a></td>
+                <td><a class='fa fa-lg fa-warning text-red' href='?action=del&id={{row.id}}'></a></td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+    </div>
+
+    <div class="box-footer clearfix">
+        {% if form%}
+        <ul class="pagination pagination-sm no-margin pull-right">
+            <li><a href="#">&laquo;</a></li>
+            {% for i in range(1, form.total_page+ 1) %}
+            {% if i == form.page %}
+            <li><a href="?page={{i}}"><b>{{i}}</b></a></li>
+            {% else %}
+            <li><a href="?page={{i}}">{{i}}</a></li>
+            {% endif %}
+            {% endfor %}
+            <li><a href="#">&raquo;</a></li>
+        </ul>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    function initPage() {
+        slide_value = $(".slider").val() == "" ? 50 : parseInt($(".slider").val());
+        $(".slider").slider({
+            id: "blue",
+            max: 100,
+            value: slide_value
+        });
+
+        $('.status').bootstrapSwitch();
+        $(".status").on("switchChange.bootstrapSwitch", function (event, state) {
+            switchStatus($(this).data("id"), state, this);
+        });
+    }
+    function switchStatus(id, status, switchBox) {
+        restTemplate("PUT", "/notifies/" + id + "/status/" + status, null, function () {
+            $($(switchBox)).bootstrapSwitch("state", status);
+        });
+    }
+</script>
+{% endblock %}

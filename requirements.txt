@@ -1,0 +1,6 @@
+peewee
+pymysql
+flask
+flask-script
+flask-wtf
+flask-login

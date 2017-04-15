@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>系统登录</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/iCheck/square/blue.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/pace/pace.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/adminlte/css/AdminLTE.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/adminlte/css/skins/skin-blue.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
+    <!--[if lt IE 9]>
+    <script src="plugins/html5shiv.min.js"></script>
+    <script src="plugins/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body class="hold-transition login-page">
+<div class="login-box">
+    <div class="login-logo">
+        <b>系统登录</b>
+    </div>
+    <div class="login-box-body">
+        <p class="login-box-msg">请输入管理员帐户及密码</p>
+        <form method="post">
+            {{form.hidden_tag()}}
+            <div class="form-group has-feedback">
+                {{form.username(class_="form-control",placeholder="用户名")}}
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                {{form.password(class_="form-control",placeholder="密码")}}
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            </div>
+
+            {% for message in get_flashed_messages() %}
+            <div class="alert alert-warning">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{ message }}
+            </div>
+            {% endfor %}
+
+            <div class="row">
+                <div class="col-xs-8">
+                    <div class="checkbox icheck">
+                        <label>
+                            {{form.rememberme()}}{{form.rememberme.label}}
+                        </label>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    {{form.submit(class_="btn btn-primary btn-block btn-flat")}}
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="{{ url_for('static', filename='plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
+<script src="{{ url_for('static', filename='plugins/bootstrap/js/bootstrap.min.js') }}"></script>
+<script src="{{ url_for('static', filename='plugins/iCheck/icheck.min.js') }}"></script>
+<script src="{{ url_for('static', filename='plugins/pace/pace.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/global.js') }}"></script>
+<script>
+    function initPage() {
+        //初始化iCheck插件
+        $('input').iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-blue',
+            increaseArea: '20%' // optional
+        });
+
+    }
+</script>
+</body>
+</html>

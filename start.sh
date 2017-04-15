@@ -1,0 +1,1 @@
+nohup ./manage.py runserver 2>&1 &
